@@ -1,0 +1,39 @@
+﻿@model List<TaskModel>
+
+<h1>Всички задачи</h1>
+
+<a asp-controller="Task" asp-action="Add" class="btn btn-info">Добавяне</a>
+
+@if (!Model.Any())
+{
+    <p>Все още няма въведени задачи</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>Id</td>
+            <td>Заглавие</td>
+            <td>Съдържание</td>
+            <td>Дата</td>
+            <td>Час</td>
+            <td>Операции</td>
+        </tr>
+        @foreach (TaskModel task in Model)
+        {
+            <tr>
+                <td>@task.Id</td>
+                <td>@task.Title</td>
+                <td>@task.ContentToDo</td>
+                <td>@task.Date</td>
+                <td>@task.Hour</td>
+                <td>
+                    <a asp-controller="Task" asp-action="Edit" asp-route-id="@task.Id" class="btn btn-primary">Редактиране</a>
+                    <a asp-controller="Task" asp-action="Delete" asp-route-id="@task.Id" class="btn btn-danger">Изтриване</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+
+}

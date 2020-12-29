@@ -1,0 +1,46 @@
+﻿@model TaskModel
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>@(Model.Id > 0 ? "Редактиране" : "Добавяне") на задачи</h1>
+
+<form asp-controller="Task" asp-action="Add" method="post">
+
+    <div asp-validation-summary="All" class="form-group col-md-4 text-danger"></div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Title"></label>
+            <input class="form-control" asp-for="Title" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="ContentToDo"></label>
+            <input class="form-control" asp-for="ContentToDo" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Date"></label>
+            <input class="form-control" asp-for="Date" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Hour"></label>
+            <input class="form-control" asp-for="Hour" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <input type="submit" value="@(Model.Id > 0 ? "Редактиране" : "Добавяне")" class="btn btn-info" />
+        </div>
+    </div>
+    <input type="hidden" asp-for="Id" />
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

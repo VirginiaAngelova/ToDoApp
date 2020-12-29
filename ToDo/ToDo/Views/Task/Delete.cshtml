@@ -1,0 +1,13 @@
+﻿@model TaskModel
+
+@{
+    ViewData["Title"] = "Delete a task";
+}
+
+<h1>Изтриване на задача</h1>
+
+<p>Сигурни ли сте,че искате да изтриете  задачата @Model.Title ? </p>
+<p>
+    <a asp-controller="Task" asp-action="Index" class="btn btn-info">Не</a>
+    <a asp-controller="Task" asp-action="ConfirmDelete" asp-route-id="@Model.Id" class="btn btn-danger">Да</a>
+</p>
